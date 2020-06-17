@@ -1,26 +1,26 @@
-// const BREEDS_URL = 'https://dog.ceo/api/breeds/image/random';
+function getDoggo(url) {
+    const img = document.querySelector('.dog-img');
+    const loading = document.querySelector('.loading');
+    img.onload = () => {
+        loading.classList.add('hidden');
+        img.classList.remove('hidden');
+    }
 
-// function addDoggo() {
+    // show loading spinner
+    img.classList.add('hidden');
+    loading.classList.remove('hidden');
 
-//     // show loading spinner
-//     fetch(BREEDS_URL) // returns a promise
-//         .then((response) => {
-//             return response.json();
-//         })
-//         .then((data) => {
-//             const img = document.createElement('img');
-//             img.src = data.message;
-//             img.alt = 'Cute Dog';
-    
-//             document.querySelector('.doggos').appendChild(img);
-            
-//             // stop loading spinner
-//         });
-// }
+    fetch(url) // returns a promise
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            img.src = data.message;
+        });
+}
 
-// document.querySelector('.add-doggo').addEventListener("click", addDoggo);
-
-const BREEDS_URL = ' https://dog.ceo/api/breeds/list/all';
+const BREEDS_URL = 'https://dog.ceo/api/breeds/list/all';
+const select = document.querySelector('.breeds');
 
 fetch(BREEDS_URL)
     .then(response => {
@@ -29,5 +29,18 @@ fetch(BREEDS_URL)
     .then(data => {
         const breedsObject = data.message;
         const breedsArray = Object.keys(breedsObject);
-        console.log(breedsArray);
+
+        for (let i = 0; i < breedsArray.length; i++) {
+            const option = document.createElement('option');
+            option.value = breedsArray[i];
+            option.innerText = breedsArray[i];
+            select.appendChild(option);
+        }
     });
+
+select.addEventListener("change", (event) => {
+    let url = `https://dog.ceo/api/breed/${event.target.value}/images/random`;
+    getDoggo(url);
+})
+
+getDoggo('https://dog.ceo/api/breed/affenpinscher/images/random');

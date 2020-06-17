@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.top {
+    position: relative;
+    height: 10vh;
+    background-color: rgb(28, 46, 46);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 .5rem 0.5rem grey;
+    z-index: 10;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    color: azure;
+}
+
+.breeds {
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: rgb(28, 46, 46);
+    background-color: azure;
+    border: none;
+}
+
+.doggos {
+    height: 90vh;
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@keyframes spin {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.loading {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    font-size: 2rem;
+}
+
+.hidden {
+    display: none;
+}
