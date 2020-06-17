@@ -1,2 +1,2 @@
 # dogs
- A website with dogs using Dog API
+ A website that shows a dog from selected breed using Dog API
